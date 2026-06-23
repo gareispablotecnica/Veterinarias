@@ -39,3 +39,8 @@ def EliminarMascota(request, ID_Mascota):
     query = get_object_or_404(Mascota, ID_Mascota=ID_Mascota)
     query.delete()
     return render(request, 'Pages/Confirmacion.html', {'Mensaje': 'Mascota Eliminada'})
+
+
+def Cerrar_Sesion(request):
+    logout(request)
+    return redirect ('Home')

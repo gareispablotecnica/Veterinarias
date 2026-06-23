@@ -8,4 +8,6 @@ urlpatterns = [
     path('Mascotas/', VerMascotas, name='VerMascotas'),
     path('Modificacion/<int:ID_Mascota>/', Modificacion, name='Modificacion'),
     path('Eliminar/<int:ID_Mascota>/',EliminarMascota, name='EliminarMascota'),
+    
+    path('logouts/',Cerrar_Sesion,name="cerrar"),
 ]
