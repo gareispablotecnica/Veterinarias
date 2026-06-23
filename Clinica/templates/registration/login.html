@@ -2,37 +2,14 @@
 {% load static %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card login-card shadow">
-                <div class="card-header text-white text-center py-4">
-                    <img src="{% static 'Clinica/img/logo.svg' %}" alt="Patitas Felices" height="60" class="mb-2">
-                    <h3 class="mb-0">Iniciar Sesión</h3>
-                </div>
-                <div class="card-body p-4">
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Usuario</label>
-                            <input type="text" name="username" class="form-control" placeholder="Nombre de usuario" required>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label fw-semibold">Contraseña</label>
-                            <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
-                        </div>
-                        {% if form.errors %}
-                            <div class="alert alert-danger py-2">
-                                Usuario o contraseña incorrectos
-                            </div>
-                        {% endif %}
-                        <button type="submit" class="btn btn-primary w-100 btn-lg">
-                            <i class="bi bi-box-arrow-in-right"></i> Ingresar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<div class="contenedor_login">
+    <form method="post" class="formulario_login">
+        {% csrf_token %}
+        <h2 class="titulo_login">Iniciar Sesión</h2>
+        {{form}}
+        {% csrf_token %} 
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
 </div>
+
 {% endblock %}
