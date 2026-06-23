@@ -171,6 +171,17 @@ python manage.py runserver
 
 ---
 
+
+### Usuarios
+- User: Gareis o gareis
+- Paswword: 1234
+
+---
+
+-User: Pablo o pablo
+- Paswword: 1234
+
+---
 ##  Licencia
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
