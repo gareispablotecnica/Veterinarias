@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth import logout
+
 from .forms import FormularioRegistro
 from .models import Mascota
 
