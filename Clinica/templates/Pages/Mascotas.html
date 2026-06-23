@@ -1,0 +1,61 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <img src="{% static 'Clinica/img/view-icon.svg' %}" alt="Mascotas" height="60" class="mb-2">
+        <h2 class="fw-bold">Nuestros Pacientes</h2>
+        <p class="text-muted">Listado completo de mascotas registradas</p>
+    </div>
+
+    {% if VerMascotas %}
+    <div class="row">
+        {% for mascota in VerMascotas %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card pet-card h-100 shadow-sm">
+                <div class="pet-image-container">
+                    {% if mascota.Foto %}
+                        <img src="{{ mascota.Foto.url }}" class="card-img-top pet-image" alt="{{ mascota.Nombre }}">
+                    {% else %}
+                        <div class="pet-placeholder d-flex align-items-center justify-content-center">
+                            <img src="{% static 'Clinica/img/pet-placeholder.svg' %}" alt="Mascota" height="100">
+                        </div>
+                    {% endif %}
+                    <span class="badge species-badge">{{ mascota.Especie }}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ mascota.Nombre }}</h5>
+                    <div class="pet-details">
+                        <p class="mb-1"><i class="bi bi-info-circle"></i> <strong>Raza:</strong> {{ mascota.Raza|default:"-" }}</p>
+                        <p class="mb-1"><i class="bi bi-calendar"></i> <strong>Edad:</strong> {{ mascota.Edad }} años</p>
+                        <p class="mb-1"><i class="bi bi-person-fill"></i> <strong>Dueño:</strong> {{ mascota.Dueno }}</p>
+                        <p class="mb-0"><i class="bi bi-telephone-fill"></i> <strong>Tel:</strong> {{ mascota.Telefono }}</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-3">
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="{% url 'Modificacion' ID_Mascota=mascota.ID_Mascota %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-fill"></i> Editar
+                        </a>
+                        <a href="{% url 'EliminarMascota' ID_Mascota=mascota.ID_Mascota %}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar a {{ mascota.Nombre }}?')">
+                            <i class="bi bi-trash-fill"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5">
+        <img src="{% static 'Clinica/img/empty.svg' %}" alt="Sin mascotas" height="150" class="mb-3">
+        <h4 class="text-muted">No hay mascotas registradas</h4>
+        <p class="text-muted">¡Registra tu primera mascota!</p>
+        <a href="{% url 'Registro' %}" class="btn btn-primary btn-lg mt-2">
+            <i class="bi bi-plus-circle-fill"></i> Registrar Mascota
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

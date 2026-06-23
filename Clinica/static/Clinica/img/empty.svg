@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+  <circle cx="75" cy="60" r="25" fill="#e0e0e0"/>
+  <ellipse cx="75" cy="100" rx="38" ry="25" fill="#e0e0e0"/>
+  <circle cx="58" cy="80" r="15" fill="#e0e0e0"/>
+  <circle cx="92" cy="80" r="15" fill="#e0e0e0"/>
+  <circle cx="67" cy="55" r="4" fill="#999"/>
+  <circle cx="83" cy="55" r="4" fill="#999"/>
+  <ellipse cx="75" cy="65" rx="6" ry="4" fill="#e74c3c"/>
+  <path d="M45 40 Q30 20 50 25" stroke="#e0e0e0" stroke-width="4" fill="none"/>
+  <path d="M105 40 Q120 20 100 25" stroke="#e0e0e0" stroke-width="4" fill="none"/>
+  <text x="75" y="135" text-anchor="middle" font-family="Arial" font-size="12" fill="#aaa">Sin mascotas</text>
+</svg>

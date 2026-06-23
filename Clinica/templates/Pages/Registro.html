@@ -1,0 +1,47 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card form-card shadow">
+                <div class="card-header text-white text-center py-3">
+                    <img src="{% static 'Clinica/img/register-icon.svg' %}" alt="Registro" height="50" class="mb-2">
+                    <h3 class="mb-0">Formulario de Registro</h3>
+                </div>
+                <div class="card-body p-4">
+                    {% if Mensaje %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle-fill"></i> {{ Mensaje }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            {% for field in Formulario %}
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger small">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="bi bi-save-fill"></i> Guardar
+                            </button>
+                            <a href="{% url 'Home' %}" class="btn btn-outline-secondary btn-lg px-5">
+                                <i class="bi bi-x-circle-fill"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
